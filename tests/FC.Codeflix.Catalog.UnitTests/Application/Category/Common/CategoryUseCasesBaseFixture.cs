@@ -1,13 +1,20 @@
+using FC.Codeflix.Catalog.Application.Interfaces;
+using FC.Codeflix.Catalog.Domain.Repository;
 using FC.Codeflix.Catalog.UnitTests.Common;
-using Xunit;
+using Moq;
 using DomainEntity = FC.Codeflix.Catalog.Domain.Entity;
 
-namespace FC.Codeflix.Catalog.UnitTests.Domain.Entity.Category;
 
-public class CategoryTestFixture : BaseFixture
+namespace FC.Codeflix.Catalog.UnitTests.Application.Category.Common;
+public abstract class CategoryUseCasesBaseFixture
+    : BaseFixture
 {
-    public CategoryTestFixture()
-        : base() {}
+
+    public Mock<ICategoryRepository> GetRepositoryMock()
+        => new();
+
+    public Mock<IUnitOfWork> GetUnitOfWorkMock()
+        => new();
 
     public string GetValidCategoryName()
     {
@@ -21,22 +28,18 @@ public class CategoryTestFixture : BaseFixture
 
     public string GetValidCategoryDescription()
     {
-        var categoryDescription = 
+        var categoryDescription =
             Faker.Commerce.ProductDescription();
-        if(categoryDescription.Length > 10_000)
-            categoryDescription = 
+        if (categoryDescription.Length > 10_000)
+            categoryDescription =
                 categoryDescription[..10_000];
         return categoryDescription;
     }
 
-    public DomainEntity.Category GetValidCategory()
+    public DomainEntity.Category GetExampleCategory()
         => new(
             GetValidCategoryName(),
-            GetValidCategoryDescription()
+            GetValidCategoryDescription(),
+            GetRandomBoolean()
         );
 }
-
-[CollectionDefinition(nameof(CategoryTestFixture))]
-public class CategoryTestFixtureCollection 
-    : ICollectionFixture<CategoryTestFixture>
-{ }

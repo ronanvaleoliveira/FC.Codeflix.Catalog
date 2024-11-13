@@ -1,5 +1,8 @@
 using FC.Codeflix.Catalog.Domain.Exceptions;
 using FluentAssertions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 using DomainEntity = FC.Codeflix.Catalog.Domain.Entity;
 namespace FC.Codeflix.Catalog.UnitTests.Domain.Entity.Category;
@@ -161,7 +164,7 @@ public class CategoryTest
     {
         var validCategory = _categoryTestFixture.GetValidCategory();
 
-        var category = new DomainEntity.Category(validCategory.Name, validCategory.Description);
+        var category = new DomainEntity.Category(validCategory.Name, validCategory.Description, true);
         category.Deactivate();
 
         category.IsActive.Should().BeFalse();

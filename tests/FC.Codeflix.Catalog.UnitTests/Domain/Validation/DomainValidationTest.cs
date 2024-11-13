@@ -2,7 +2,9 @@ using Bogus;
 using Xunit;
 using FC.Codeflix.Catalog.Domain.Validation;
 using FluentAssertions;
+using System;
 using FC.Codeflix.Catalog.Domain.Exceptions;
+using System.Collections.Generic;
 
 namespace FC.Codeflix.Catalog.UnitTests.Domain.Validation;
 
@@ -117,10 +119,10 @@ public class DomainValidationTest
         }
     }
 
-    [Theory(DisplayName = nameof(MaxLengthThrowWhenGreater))]
+    [Theory(DisplayName = nameof(maxLengthThrowWhenGreater))]
     [Trait("Domain", "DomainValidation - Validation")]
     [MemberData(nameof(GetValuesGreaterThanMax), parameters: 10)]
-    public void MaxLengthThrowWhenGreater(string target, int maxLength)
+    public void maxLengthThrowWhenGreater(string target, int maxLength)
     {
         string fieldName = Faker.Commerce.ProductName().Replace(" ", "");
 
@@ -143,10 +145,10 @@ public class DomainValidationTest
         }
     }
 
-    [Theory(DisplayName = nameof(MaxLengthOk))]
+    [Theory(DisplayName = nameof(maxLengthOk))]
     [Trait("Domain", "DomainValidation - Validation")]
     [MemberData(nameof(GetValuesLessThanMax), parameters: 10)]
-    public void MaxLengthOk(string target, int maxLength)
+    public void maxLengthOk(string target, int maxLength)
     {
         string fieldName = Faker.Commerce.ProductName().Replace(" ", "");
 
