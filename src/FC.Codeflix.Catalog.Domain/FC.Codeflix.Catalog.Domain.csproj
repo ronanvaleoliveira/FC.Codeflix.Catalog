@@ -8,6 +8,8 @@
 
     <ItemGroup>
       <Compile Remove="Class1.cs" />
+      <Compile Remove="RepositoryRepository\IGenreRepository.cs" />
+      <Compile Remove="Repository\IGenreRepository.cs" />
     </ItemGroup>
 
 </Project>
