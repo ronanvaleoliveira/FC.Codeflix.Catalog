@@ -22,7 +22,7 @@ public class CreateCategoryTest
 
     [Fact(DisplayName = nameof(CreateCategory))]
     [Trait("Application", "CreateCategory - Use Cases")]
-    public async void CreateCategory()
+    public async Task CreateCategory()
     {
         var repositoryMock = _fixture.GetRepositoryMock();
         var unitOfWorkMock = _fixture.GetUnitOfWorkMock();
@@ -54,7 +54,7 @@ public class CreateCategoryTest
 
     [Fact(DisplayName = nameof(CreateCategoryWithOnlyName))]
     [Trait("Application", "CreateCategory - Use Cases")]
-    public async void CreateCategoryWithOnlyName()
+    public async Task CreateCategoryWithOnlyName()
     {
         var repositoryMock = _fixture.GetRepositoryMock();
         var unitOfWorkMock = _fixture.GetUnitOfWorkMock();
@@ -88,7 +88,7 @@ public class CreateCategoryTest
 
     [Fact(DisplayName = nameof(CreateCategoryWithOnlyNameAndDescription))]
     [Trait("Application", "CreateCategory - Use Cases")]
-    public async void CreateCategoryWithOnlyNameAndDescription()
+    public async Task CreateCategoryWithOnlyNameAndDescription()
     {
         var repositoryMock = _fixture.GetRepositoryMock();
         var unitOfWorkMock = _fixture.GetUnitOfWorkMock();
@@ -128,7 +128,7 @@ public class CreateCategoryTest
         parameters: 24,
         MemberType = typeof(CreateCategoryTestDataGenerator)
     )]
-    public async void ThrowWhenCantInstantiateCategory(
+    public async Task ThrowWhenCantInstantiateCategory(
         CreateCategoryInput input,
         string exceptionMessage
     )
